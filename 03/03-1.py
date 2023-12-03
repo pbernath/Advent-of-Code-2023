@@ -13,11 +13,13 @@ file.close()
 #     "..35..633.",
 #     "......#...",
 #     "617*......",
-#     ".....+.58.",
+#     ".....+..58",
 #     "..592.....",
 #     "......755.",
 #     "...$.*....",
 #     ".664.598.."]
+
+#Lines = [".....*......................-..........................*...204........156......7............*................/.717*..................296....", "..826.....924.......................956..............920..................259.-......$......286........6..955.........................=..457", "......124*......................48.....=...435..............12.....886....*........411..........*170..%............90..-295.624............."]
 
 arrayed = list(Lines)
 
@@ -28,29 +30,31 @@ def checkIndex(x, y, max_x):
             if x+i >= 0 and y+j >= 0 and x+i < max_x and y+j < len(Lines):
                 #print("checking reltive position " + str(i) + "," + str(j))
                 #print("checking actual position " + str(x+i) + "," + str(y+j))
-                print("actual char: " + arrayed[y+j][x+i])
+                #print("actual char: " + arrayed[y+j][x+i])
                 if arrayed[y+j][x+i].isalnum() == False and arrayed[y+j][x+i] != ".":
-                    print("returning True")
+                    #print("returning True")
                     return True
 
 for i, line in enumerate(Lines):
     numbers = re.findall(r'[0-9]+', line)
-    print(numbers)
+    #print(i)
+    #print(numbers)
     index = 0
 
     for number in numbers:
-        print("working on " + number)
+        #print("working on " + number)
         adjecancy = False
         length = len(number)
         index = line.find(number, index)
-        print("check Left at index " + str(index))
-        adjecancy = checkIndex(index, i, len(line))
+        #print("check Left at index " + str(index))
+        adjecancy = checkIndex(index, i, len(line)-1)
         index += length-1
         if adjecancy != True:
-            print("check Right at index " + str(index))
-            adjecancy = checkIndex(index, i, len(line))
+            #print("check Right at index " + str(index))
+            adjecancy = checkIndex(index, i, len(line)-1)
         if adjecancy == True:
-            print("adding " + number)
+            #print("adding " + number)
             sum += int(number)
+        index += 1
 
 print("The sum of all parts in schematic is: " + str(sum))
