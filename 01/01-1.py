@@ -2,7 +2,7 @@ import re
 
 sum = 0
 
-file = open("c:/users/nbern/documents/git/aoc/01/01-input.txt", "r")
+file = open("01-input.txt", "r")
 Lines = file.readlines()
 file.close()
 
