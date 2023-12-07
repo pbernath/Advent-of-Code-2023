@@ -157,7 +157,10 @@ def numberfyCards (hand):
 
 
 
-sortedSets = [[], [], [], [], [], [], []]
+sortedSets = []
+for set in sets:
+    sortedSets.append([])
+    
 for set in sets:
     set.append(numberfyCards(set[0]))
     set.append(checkType(set[2]))
